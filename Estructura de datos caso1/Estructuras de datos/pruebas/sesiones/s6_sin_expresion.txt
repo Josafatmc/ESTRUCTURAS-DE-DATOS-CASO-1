@@ -1,0 +1,80 @@
+==============================================================
+  ANÁLISIS DE EXPRESIONES ARITMÉTICAS CON PILAS  (SOFT-10)
+  Operadores: + - * / ^  Paréntesis: ( )  Variables: x, y1
+==============================================================
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 2
+
+Primero ingrese una expresión con la opción 1.
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 4
+
+Primero ingrese una expresión con la opción 1.
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 3
+
+Primero ingrese una expresión con la opción 1.
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 5
+
+Primero ingrese una expresión con la opción 1.
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 0
+
+
+Programa finalizado. ¡Hasta pronto!

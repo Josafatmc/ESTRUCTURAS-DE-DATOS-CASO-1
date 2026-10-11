@@ -1,0 +1,94 @@
+==============================================================
+  ANÁLISIS DE EXPRESIONES ARITMÉTICAS CON PILAS  (SOFT-10)
+  Operadores: + - * / ^  Paréntesis: ( )  Variables: x, y1
+==============================================================
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 7
+
+PRÁCTICA CON LA PILA (capacidad máxima: 10)
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: b
+  Subdesbordamiento: no se puede hacer pop en una pila vacía.
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: c
+  Subdesbordamiento: no se puede consultar la cima de una pila vacía.
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: a
+  Token a apilar (número, variable, operador o paréntesis): (
+  push(() -> [ ( ]
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: a
+  Token a apilar (número, variable, operador o paréntesis): +
+  push(u+) -> [ ( , u+ ]
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: a
+  Token a apilar (número, variable, operador o paréntesis): x
+  push(x) -> [ ( , u+ , x ]
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: f
+  [ ( , u+ , x ]
+   +-----+
+   |  x  |  <-- CIMA
+   +-----+
+   | u+  |
+   +-----+
+   |  (  |
+   +-----+
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: c
+  peek() -> x   pila: [ ( , u+ , x ]
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: b
+  pop() -> x   pila: [ ( , u+ ]
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: d
+  isEmpty() -> false   size() -> 2
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: a
+  Token a apilar (número, variable, operador o paréntesis): 1 2
+  Escriba exactamente un token.
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: a
+  Token a apilar (número, variable, operador o paréntesis): $
+  Token no válido: Carácter no permitido '$' (posición 1)
+
+  a) push   b) pop   c) peek   d) isEmpty / tamaño   e) vaciar   f) mostrar   v) volver
+  Acción: v
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 0
+
+
+Programa finalizado. ¡Hasta pronto!

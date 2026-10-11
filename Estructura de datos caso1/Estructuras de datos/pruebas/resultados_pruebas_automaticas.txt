@@ -1,0 +1,338 @@
+PRUEBAS AUTOMÁTICAS - Análisis de expresiones aritméticas con pila
+===================================================================
+
+--- A. Evaluación correcta (postfija y resultado) ---
+[A01] Suma y resta simples
+      Entrada  : "3 + 4"
+      Esperado : 3 4 +  =>  7
+      Obtenido : 3 4 +  =>  7
+      Estado   : APROBADA
+[A02] Resta asociativa por la izquierda
+      Entrada  : "10 - 4 - 3"
+      Esperado : 10 4 - 3 -  =>  3
+      Obtenido : 10 4 - 3 -  =>  3
+      Estado   : APROBADA
+[A03] Multiplicación y división
+      Entrada  : "20 / 4 * 3"
+      Esperado : 20 4 / 3 *  =>  15
+      Obtenido : 20 4 / 3 *  =>  15
+      Estado   : APROBADA
+[A04] División asociativa por la izquierda
+      Entrada  : "20 / 4 / 5"
+      Esperado : 20 4 / 5 /  =>  1
+      Obtenido : 20 4 / 5 /  =>  1
+      Estado   : APROBADA
+[A05] Precedencia: * antes que +
+      Entrada  : "2 + 3 * 4"
+      Esperado : 2 3 4 * +  =>  14
+      Obtenido : 2 3 4 * +  =>  14
+      Estado   : APROBADA
+[A06] Precedencia: * antes que + (orden inverso)
+      Entrada  : "2 * 3 + 4"
+      Esperado : 2 3 * 4 +  =>  10
+      Obtenido : 2 3 * 4 +  =>  10
+      Estado   : APROBADA
+[A07] Paréntesis cambian la precedencia
+      Entrada  : "(2 + 3) * 4"
+      Esperado : 2 3 + 4 *  =>  20
+      Obtenido : 2 3 + 4 *  =>  20
+      Estado   : APROBADA
+[A08] Paréntesis dentro de la expresión
+      Entrada  : "2 + 3 * (4 - 1)"
+      Esperado : 2 3 4 1 - * +  =>  11
+      Obtenido : 2 3 4 1 - * +  =>  11
+      Estado   : APROBADA
+[A09] Paréntesis anidados
+      Entrada  : "((2 + 3) * (4 - 1)) / 5"
+      Esperado : 2 3 + 4 1 - * 5 /  =>  3
+      Obtenido : 2 3 + 4 1 - * 5 /  =>  3
+      Estado   : APROBADA
+[A10] Paréntesis muy anidados
+      Entrada  : "(((1 + 2) * 3) - 4) ^ 2"
+      Esperado : 1 2 + 3 * 4 - 2 ^  =>  25
+      Obtenido : 1 2 + 3 * 4 - 2 ^  =>  25
+      Estado   : APROBADA
+[A11] Potencia asociativa por la derecha
+      Entrada  : "2 ^ 3 ^ 2"
+      Esperado : 2 3 2 ^ ^  =>  512
+      Obtenido : 2 3 2 ^ ^  =>  512
+      Estado   : APROBADA
+[A12] Potencia con mayor precedencia que *
+      Entrada  : "3 * 2 ^ 3"
+      Esperado : 3 2 3 ^ *  =>  24
+      Obtenido : 3 2 3 ^ *  =>  24
+      Estado   : APROBADA
+[A13] Espacios irregulares
+      Entrada  : "  7+   8 *2  "
+      Esperado : 7 8 2 * +  =>  23
+      Obtenido : 7 8 2 * +  =>  23
+      Estado   : APROBADA
+[A14] Sin espacios
+      Entrada  : "7+8*2-(1+1)"
+      Esperado : 7 8 2 * + 1 1 + -  =>  21
+      Obtenido : 7 8 2 * + 1 1 + -  =>  21
+      Estado   : APROBADA
+[A15] Números decimales
+      Entrada  : "3.5 + 2.25 * 2"
+      Esperado : 3.5 2.25 2 * +  =>  8
+      Obtenido : 3.5 2.25 2 * +  =>  8
+      Estado   : APROBADA
+[A16] Redondeo de decimales
+      Entrada  : "0.1 + 0.2"
+      Esperado : 0.1 0.2 +  =>  0.3
+      Obtenido : 0.1 0.2 +  =>  0.3
+      Estado   : APROBADA
+[A17] Signo unario al inicio
+      Entrada  : "-5 + 2"
+      Esperado : 5 u- 2 +  =>  -3
+      Obtenido : 5 u- 2 +  =>  -3
+      Estado   : APROBADA
+[A18] Signo unario tras operador
+      Entrada  : "10 - -3"
+      Esperado : 10 3 u- -  =>  13
+      Obtenido : 10 3 u- -  =>  13
+      Estado   : APROBADA
+[A19] Unario menor que potencia: -2^2
+      Entrada  : "-2 ^ 2"
+      Esperado : 2 2 ^ u-  =>  -4
+      Obtenido : 2 2 ^ u-  =>  -4
+      Estado   : APROBADA
+[A20] Unario aplicado a paréntesis
+      Entrada  : "-(3 + 4)"
+      Esperado : 3 4 + u-  =>  -7
+      Obtenido : 3 4 + u-  =>  -7
+      Estado   : APROBADA
+[A21] Unario después de * 
+      Entrada  : "2 * -3"
+      Esperado : 2 3 u- *  =>  -6
+      Obtenido : 2 3 u- *  =>  -6
+      Estado   : APROBADA
+[A22] Variables numéricas
+      Entrada  : "(a + b) * c - d / 2" {a=2.0, b=3.0, c=4.0, d=10.0}
+      Esperado : a b + c * d 2 / -  =>  15
+      Obtenido : a b + c * d 2 / -  =>  15
+      Estado   : APROBADA
+[A23] Variable con guion bajo y potencia
+      Entrada  : "precio_1 ^ 2 + y" {y=1.0, precio_1=3.0}
+      Esperado : precio_1 2 ^ y +  =>  10
+      Obtenido : precio_1 2 ^ y +  =>  10
+      Estado   : APROBADA
+[A24] Variable con valor decimal
+      Entrada  : "x * 2" {x=1.25}
+      Esperado : x 2 *  =>  2.5
+      Obtenido : x 2 *  =>  2.5
+      Estado   : APROBADA
+
+--- B. Expresiones inválidas (deben rechazarse con un mensaje claro) ---
+[B01] Entrada vacía
+      Entrada  : ""
+      Esperado : Error que contiene "vacía"
+      Obtenido : Error: La expresión está vacía.
+      Estado   : APROBADA
+[B02] Solo espacios
+      Entrada  : "     "
+      Esperado : Error que contiene "vacía"
+      Obtenido : Error: La expresión está vacía.
+      Estado   : APROBADA
+[B03] Paréntesis sin cerrar
+      Entrada  : "(3 + 4"
+      Esperado : Error que contiene "sin cerrar"
+      Obtenido : Error: Paréntesis de apertura sin cerrar (posición 1)
+      Estado   : APROBADA
+[B04] Paréntesis de cierre sobrante
+      Entrada  : "3 + 4)"
+      Esperado : Error que contiene "sin apertura"
+      Obtenido : Error: Paréntesis de cierre sin apertura correspondiente (posición 6)
+      Estado   : APROBADA
+[B05] Paréntesis desbalanceados anidados
+      Entrada  : "((3 + 4) * 2"
+      Esperado : Error que contiene "sin cerrar"
+      Obtenido : Error: Paréntesis de apertura sin cerrar (posición 1)
+      Estado   : APROBADA
+[B06] Cierre antes de apertura
+      Entrada  : ")3 + 4("
+      Esperado : Error que contiene "sin apertura"
+      Obtenido : Error: Paréntesis de cierre sin apertura correspondiente (posición 1)
+      Estado   : APROBADA
+[B07] Paréntesis vacíos
+      Entrada  : "3 + ()"
+      Esperado : Error que contiene "vacíos"
+      Obtenido : Error: Paréntesis vacíos: '()' (posición 6)
+      Estado   : APROBADA
+[B08] Operadores consecutivos
+      Entrada  : "3 + * 4"
+      Esperado : Error que contiene "consecutivos"
+      Obtenido : Error: Operadores consecutivos: '+' seguido de '*' (posición 5)
+      Estado   : APROBADA
+[B09] Operador al final
+      Entrada  : "3 +"
+      Esperado : Error que contiene "incompleta"
+      Obtenido : Error: La expresión está incompleta: termina con '+' (posición 3)
+      Estado   : APROBADA
+[B10] Operador al inicio
+      Entrada  : "* 3"
+      Esperado : Error que contiene "izquierda"
+      Obtenido : Error: El operador '*' no tiene operando a su izquierda (posición 1)
+      Estado   : APROBADA
+[B11] Dos operandos sin operador
+      Entrada  : "3 4"
+      Esperado : Error que contiene "Falta un operador"
+      Obtenido : Error: Falta un operador entre '3' y '4' (posición 3)
+      Estado   : APROBADA
+[B12] Multiplicación implícita no admitida
+      Entrada  : "2(3 + 4)"
+      Esperado : Error que contiene "Falta un operador"
+      Obtenido : Error: Falta un operador antes del paréntesis de apertura (posición 2)
+      Estado   : APROBADA
+[B13] Paréntesis seguidos sin operador
+      Entrada  : "(1 + 2)(3 + 4)"
+      Esperado : Error que contiene "Falta un operador"
+      Obtenido : Error: Falta un operador antes del paréntesis de apertura (posición 8)
+      Estado   : APROBADA
+[B14] Carácter no permitido
+      Entrada  : "2 $ 3"
+      Esperado : Error que contiene "no permitido"
+      Obtenido : Error: Carácter no permitido '$' (posición 3)
+      Estado   : APROBADA
+[B15] Número con dos puntos
+      Entrada  : "1.2.3"
+      Esperado : Error que contiene "más de un punto"
+      Obtenido : Error: Número mal formado: tiene más de un punto decimal (posición 1)
+      Estado   : APROBADA
+[B16] Punto sin decimales
+      Entrada  : "3. + 1"
+      Esperado : Error que contiene "faltan dígitos"
+      Obtenido : Error: Número mal formado: faltan dígitos después del punto decimal (posición 1)
+      Estado   : APROBADA
+[B17] Punto sin parte entera
+      Entrada  : ".5 + 1"
+      Esperado : Error que contiene "después de un dígito"
+      Obtenido : Error: Número mal formado: el punto decimal debe ir después de un dígito (posición 1)
+      Estado   : APROBADA
+[B18] Intento de inyección de código
+      Entrada  : "Math.exit(0)"
+      Esperado : Error que contiene "después de un dígito"
+      Obtenido : Error: Número mal formado: el punto decimal debe ir después de un dígito (posición 5)
+      Estado   : APROBADA
+[B19] Expresión demasiado larga
+      Entrada  : "1+1+1+1+1+1+..." (301 caracteres)
+      Esperado : Error que contiene "máximo"
+      Obtenido : Error: La expresión supera el máximo de 200 caracteres.
+      Estado   : APROBADA
+[B20] Operador antes de cierre
+      Entrada  : "(3 + )"
+      Esperado : Error que contiene "Falta un operando"
+      Obtenido : Error: Falta un operando antes del paréntesis de cierre (posición 6)
+      Estado   : APROBADA
+[B21] Operador unario sin operando
+      Entrada  : "5 + -"
+      Esperado : Error que contiene "incompleta"
+      Obtenido : Error: La expresión está incompleta: termina con '-' (posición 5)
+      Estado   : APROBADA
+
+--- C. Errores durante la evaluación ---
+[C01] División entre cero
+      Entrada  : "3 / 0"
+      Esperado : Error que contiene "División entre cero"
+      Obtenido : Error: División entre cero: 3 / 0
+      Estado   : APROBADA
+[C02] División entre cero calculada
+      Entrada  : "5 / (2 - 2)"
+      Esperado : Error que contiene "División entre cero"
+      Obtenido : Error: División entre cero: 5 / 0
+      Estado   : APROBADA
+[C03] Cero elevado a exponente negativo
+      Entrada  : "0 ^ -1"
+      Esperado : Error que contiene "División entre cero"
+      Obtenido : Error: División entre cero: 0 elevado a un exponente negativo
+      Estado   : APROBADA
+[C04] Variable sin valor
+      Entrada  : "a + 1"
+      Esperado : Error que contiene "no tiene un valor"
+      Obtenido : Error: La variable 'a' no tiene un valor asignado
+      Estado   : APROBADA
+[C05] Desbordamiento numérico
+      Entrada  : "10 ^ 200 * 10 ^ 200"
+      Esperado : Error que contiene "rango"
+      Obtenido : Error: El resultado excede el rango numérico representable
+      Estado   : APROBADA
+[C06] Resultado no real
+      Entrada  : "(-8) ^ 0.5"
+      Esperado : Error que contiene "no es un número real"
+      Obtenido : Error: El resultado no es un número real (p. ej. raíz de un negativo)
+      Estado   : APROBADA
+
+--- D. Pila: operaciones, LIFO y casos límite ---
+[D01] Pila nueva está vacía
+      Entrada  : (operación sobre Pila)
+      Esperado : vacía,size=0
+      Obtenido : vacía,size=0
+      Estado   : APROBADA
+[D02] push y peek no retiran
+      Entrada  : (operación sobre Pila)
+      Esperado : 5,size=1
+      Obtenido : 5,size=1
+      Estado   : APROBADA
+[D03] Orden LIFO (push 1,2,3 -> pop 3,2,1)
+      Entrada  : (operación sobre Pila)
+      Esperado : 321
+      Obtenido : 321
+      Estado   : APROBADA
+[D04] pop en pila vacía lanza PilaVaciaException
+      Entrada  : (operación sobre Pila)
+      Esperado : PilaVaciaException
+      Obtenido : PilaVaciaException
+      Estado   : APROBADA
+[D05] peek en pila vacía lanza PilaVaciaException
+      Entrada  : (operación sobre Pila)
+      Esperado : PilaVaciaException
+      Obtenido : PilaVaciaException
+      Estado   : APROBADA
+[D06] push sobre pila llena lanza PilaLlenaException
+      Entrada  : (operación sobre Pila)
+      Esperado : PilaLlenaException,size=2
+      Obtenido : PilaLlenaException,size=2
+      Estado   : APROBADA
+[D07] vaciar deja la pila vacía
+      Entrada  : (operación sobre Pila)
+      Esperado : true,size=0
+      Obtenido : true,size=0
+      Estado   : APROBADA
+[D08] pop tras vaciar por completo lanza excepción
+      Entrada  : (operación sobre Pila)
+      Esperado : PilaVaciaException
+      Obtenido : PilaVaciaException
+      Estado   : APROBADA
+[D09] push de null es rechazado
+      Entrada  : (operación sobre Pila)
+      Esperado : IllegalArgumentException
+      Obtenido : IllegalArgumentException
+      Estado   : APROBADA
+[D10] Evaluar postfija incompleta ('+' sola): operar con pila vacía
+      Entrada  : (operación sobre Pila)
+      Esperado : rechazada (pila vacía)
+      Obtenido : rechazada (pila vacía)
+      Estado   : APROBADA
+[D11] Evaluar postfija con operandos sobrantes ('1 2')
+      Entrada  : (operación sobre Pila)
+      Esperado : rechazada (sobran operandos)
+      Obtenido : rechazada (sobran operandos)
+      Estado   : APROBADA
+[D12] Un solo operando binario falta ('3 +')
+      Entrada  : (operación sobre Pila)
+      Esperado : rechazada (pila vacía)
+      Obtenido : rechazada (pila vacía)
+      Estado   : APROBADA
+[D13] toString muestra base -> cima
+      Entrada  : (operación sobre Pila)
+      Esperado : [ ( , + ]
+      Obtenido : [ ( , + ]
+      Estado   : APROBADA
+[D14] Pila grande (1000 elementos) y vaciado completo
+      Entrada  : (operación sobre Pila)
+      Esperado : retirados=1000
+      Obtenido : retirados=1000
+      Estado   : APROBADA
+
+===================================================================
+RESUMEN: 65 de 65 pruebas aprobadas.

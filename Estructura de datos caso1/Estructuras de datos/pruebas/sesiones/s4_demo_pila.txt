@@ -1,0 +1,70 @@
+==============================================================
+  ANÁLISIS DE EXPRESIONES ARITMÉTICAS CON PILAS  (SOFT-10)
+  Operadores: + - * / ^  Paréntesis: ( )  Variables: x, y1
+==============================================================
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 6
+
+OPERACIONES DE LA PILA (todas O(1))
+  push(t)  : inserta el token t en la cima
+  pop()    : retira y devuelve el token de la cima
+  peek()   : devuelve la cima sin retirarla
+  isEmpty(): indica si la pila está vacía
+
+Demostración con una pila nueva:
+  isEmpty() -> true
+
+  push(()  -> [ ( ]
+   +-----+
+   |  (  |  <-- CIMA
+   +-----+
+
+  push(+)  -> [ ( , + ]
+   +-----+
+   |  +  |  <-- CIMA
+   +-----+
+   |  (  |
+   +-----+
+
+  push(*)  -> [ ( , + , * ]
+   +-----+
+   |  *  |  <-- CIMA
+   +-----+
+   |  +  |
+   +-----+
+   |  (  |
+   +-----+
+
+  peek() -> *   (la pila no cambia: [ ( , + , * ])
+  pop()  -> *   pila: [ ( , + ]
+  pop()  -> +   pila: [ ( ]
+  pop()  -> (   pila: [ ]
+  isEmpty() -> true
+  pop() con la pila vacía -> Subdesbordamiento: no se puede hacer pop en una pila vacía.
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 0
+
+
+Programa finalizado. ¡Hasta pronto!

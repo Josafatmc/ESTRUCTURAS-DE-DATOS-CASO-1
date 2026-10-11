@@ -1,0 +1,140 @@
+==============================================================
+  ANÁLISIS DE EXPRESIONES ARITMÉTICAS CON PILAS  (SOFT-10)
+  Operadores: + - * / ^  Paréntesis: ( )  Variables: x, y1
+==============================================================
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 1
+
+Escriba la expresión (ej. 2 + 3 * (4 - 1)): (3 + 4 * 2
+Expresión guardada: (3 + 4 * 2
+La expresión NO es válida: Paréntesis de apertura sin cerrar (posición 1)
+  (3 + 4 * 2
+  ^
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (3 + 4 * 2
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 1
+
+Escriba la expresión (ej. 2 + 3 * (4 - 1)): 3 + * 4
+Expresión guardada: 3 + * 4
+La expresión NO es válida: Operadores consecutivos: '+' seguido de '*' (posición 5)
+  3 + * 4
+      ^
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 3 + * 4
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 1
+
+Escriba la expresión (ej. 2 + 3 * (4 - 1)): 2 $ 3
+Expresión guardada: 2 $ 3
+La expresión NO es válida: Carácter no permitido '$' (posición 3)
+  2 $ 3
+    ^
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 2 $ 3
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 1
+
+Escriba la expresión (ej. 2 + 3 * (4 - 1)): 3 / 0
+Expresión guardada: 3 / 0
+La expresión es VÁLIDA.
+Tokens (3): 3:num  /:op  0:num
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 3 / 0
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 4
+
+Error al evaluar: División entre cero: 3 / 0
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 3 / 0
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 9
+
+Opción no válida. Escriba un número del 0 al 7.
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 3 / 0
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: abc
+
+Opción no válida. Escriba un número del 0 al 7.
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 3 / 0
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 0
+
+
+Programa finalizado. ¡Hasta pronto!

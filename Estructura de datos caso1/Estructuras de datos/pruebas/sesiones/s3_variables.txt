@@ -1,0 +1,133 @@
+==============================================================
+  ANÁLISIS DE EXPRESIONES ARITMÉTICAS CON PILAS  (SOFT-10)
+  Operadores: + - * / ^  Paréntesis: ( )  Variables: x, y1
+==============================================================
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 1
+
+Escriba la expresión (ej. 2 + 3 * (4 - 1)): (a + b) * c - d / 2
+Expresión guardada: (a + b) * c - d / 2
+La expresión es VÁLIDA.
+Tokens (11): (:par  a:var  +:op  b:var  ):par  *:op  c:var  -:op  d:var  /:op  2:num
+Variables detectadas: [a, b, c, d] (se pedirán sus valores al evaluar)
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (a + b) * c - d / 2
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 4
+
+Valor de a: 2
+Valor de b: xx
+  Valor no válido. Use un número como 4, -2 o 3.5 (intento 1 de 3).
+Valor de b: 3
+Valor de c: 4
+Valor de d: 10
+Expresión : (a + b) * c - d / 2
+Postfija  : a b + c * d 2 / -
+Resultado : 15
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (a + b) * c - d / 2
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 4
+
+Valor de a [Enter = 2]: 
+Valor de b [Enter = 3]: 
+Valor de c [Enter = 4]: 
+Valor de d [Enter = 10]: 
+Expresión : (a + b) * c - d / 2
+Postfija  : a b + c * d 2 / -
+Resultado : 15
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (a + b) * c - d / 2
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 5
+
+PASO 1 - Balance de paréntesis (pila de paréntesis)
+Token | Acción                                    | Pila de paréntesis
+------+-------------------------------------------+-------------------
+(     | push: se abre un paréntesis               | [ ( ]
+)     | pop: se cierra el paréntesis más reciente | [ ]
+
+PASO 2 - Conversión infija -> postfija (pila de operadores)
+Token | Acción                                | Pila de operadores | Salida
+------+---------------------------------------+--------------------+------------------
+(     | Apertura: push                        | [ ( ]              | 
+a     | Operando: pasa directo a la salida    | [ ( ]              | a
++     | Operador: push                        | [ ( , + ]          | a
+b     | Operando: pasa directo a la salida    | [ ( , + ]          | a b
+)     | Cierre: pop de + a la salida y de '(' | [ ]                | a b +
+*     | Operador: push                        | [ * ]              | a b +
+c     | Operando: pasa directo a la salida    | [ * ]              | a b + c
+-     | Operador: pop de * a la salida; push  | [ - ]              | a b + c *
+d     | Operando: pasa directo a la salida    | [ - ]              | a b + c * d
+/     | Operador: push                        | [ - , / ]          | a b + c * d
+2     | Operando: pasa directo a la salida    | [ - , / ]          | a b + c * d 2
+(fin) | Fin: pop de / - a la salida           | [ ]                | a b + c * d 2 / -
+
+PASO 3 - Evaluación de la postfija (pila de valores)
+Token | Acción                          | Pila de valores
+------+---------------------------------+----------------
+a     | Variable a = 2: push 2          | [ 2 ]
+b     | Variable b = 3: push 3          | [ 2 , 3 ]
++     | Operador +: pop 3 y 2, push 5   | [ 5 ]
+c     | Variable c = 4: push 4          | [ 5 , 4 ]
+*     | Operador *: pop 4 y 5, push 20  | [ 20 ]
+d     | Variable d = 10: push 10        | [ 20 , 10 ]
+2     | Número: push 2                  | [ 20 , 10 , 2 ]
+/     | Operador /: pop 2 y 10, push 5  | [ 20 , 5 ]
+-     | Operador -: pop 5 y 20, push 15 | [ 15 ]
+
+Convención de las tablas: la pila se lista de la base a la cima (la cima es el último).
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (a + b) * c - d / 2
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 0
+
+
+Programa finalizado. ¡Hasta pronto!

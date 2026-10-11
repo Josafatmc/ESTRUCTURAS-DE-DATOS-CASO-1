@@ -1,0 +1,118 @@
+==============================================================
+  ANÁLISIS DE EXPRESIONES ARITMÉTICAS CON PILAS  (SOFT-10)
+  Operadores: + - * / ^  Paréntesis: ( )  Variables: x, y1
+==============================================================
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: (ninguna)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 1
+
+Escriba la expresión (ej. 2 + 3 * (4 - 1)): 2 + 3 * (4 - 1)
+Expresión guardada: 2 + 3 * (4 - 1)
+La expresión es VÁLIDA.
+Tokens (9): 2:num  +:op  3:num  *:op  (:par  4:num  -:op  1:num  ):par
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 2 + 3 * (4 - 1)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 3
+
+Expresión infija : 2 + 3 * (4 - 1)
+Notación postfija: 2 3 4 1 - * +
+(Use la opción 5 para ver cómo cambió la pila en cada paso.)
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 2 + 3 * (4 - 1)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 4
+
+Expresión : 2 + 3 * (4 - 1)
+Postfija  : 2 3 4 1 - * +
+Resultado : 11
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 2 + 3 * (4 - 1)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 5
+
+PASO 1 - Balance de paréntesis (pila de paréntesis)
+Token | Acción                                    | Pila de paréntesis
+------+-------------------------------------------+-------------------
+(     | push: se abre un paréntesis               | [ ( ]
+)     | pop: se cierra el paréntesis más reciente | [ ]
+
+PASO 2 - Conversión infija -> postfija (pila de operadores)
+Token | Acción                                | Pila de operadores | Salida
+------+---------------------------------------+--------------------+--------------
+2     | Operando: pasa directo a la salida    | [ ]                | 2
++     | Operador: push                        | [ + ]              | 2
+3     | Operando: pasa directo a la salida    | [ + ]              | 2 3
+*     | Operador: push                        | [ + , * ]          | 2 3
+(     | Apertura: push                        | [ + , * , ( ]      | 2 3
+4     | Operando: pasa directo a la salida    | [ + , * , ( ]      | 2 3 4
+-     | Operador: push                        | [ + , * , ( , - ]  | 2 3 4
+1     | Operando: pasa directo a la salida    | [ + , * , ( , - ]  | 2 3 4 1
+)     | Cierre: pop de - a la salida y de '(' | [ + , * ]          | 2 3 4 1 -
+(fin) | Fin: pop de * + a la salida           | [ ]                | 2 3 4 1 - * +
+
+PASO 3 - Evaluación de la postfija (pila de valores)
+Token | Acción                         | Pila de valores
+------+--------------------------------+------------------
+2     | Número: push 2                 | [ 2 ]
+3     | Número: push 3                 | [ 2 , 3 ]
+4     | Número: push 4                 | [ 2 , 3 , 4 ]
+1     | Número: push 1                 | [ 2 , 3 , 4 , 1 ]
+-     | Operador -: pop 1 y 4, push 3  | [ 2 , 3 , 3 ]
+*     | Operador *: pop 3 y 3, push 9  | [ 2 , 9 ]
++     | Operador +: pop 9 y 2, push 11 | [ 11 ]
+
+Convención de las tablas: la pila se lista de la base a la cima (la cima es el último).
+
+-------------------------- MENÚ --------------------------
+  Expresión actual: 2 + 3 * (4 - 1)
+  1. Ingresar una expresión aritmética
+  2. Validar la expresión
+  3. Convertir a notación postfija
+  4. Evaluar la expresión
+  5. Mostrar los pasos del procesamiento
+  6. Ver las operaciones de la pila (demostración)
+  7. Practicar con la pila (push / pop / peek)
+  0. Salir
+----------------------------------------------------------
+Elija una opción: 0
+
+
+Programa finalizado. ¡Hasta pronto!
